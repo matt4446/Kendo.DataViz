@@ -1,0 +1,74 @@
+﻿@{
+    //required scripts
+    Script.Require("jQuery").AtHead();
+    Script.Require("kendo").AtHead();
+    //styles
+    Style.Require("kendo.metro").AtHead();
+}
+<h2>
+    Remote pie chart demo</h2>
+<p>
+    Targets:
+</p>
+<ul>
+    <li>Fetching data from a controller</li>
+    <li>Update every 5 seconds</li>
+    <li><a href="http://demos.kendoui.com/dataviz/pie-chart/remote-data.html">Kendo remote JSON pie chart demo</a></li>
+</ul>
+
+<!-- Chart is built in the div: -->
+<div id="chart" style="height:400px">
+</div>
+
+<script type="text/javascript">
+    function createChart() {
+        $("#chart").kendoChart({
+            theme: $(document).data("kendoSkin") || "metro",
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@(Url.Action("Data", "KendoViz", new { Area = "Kendo.DataViz", DataType = "Test" }))",
+                        dataType: "json"
+                    }
+                },
+                sort: {
+                    field: "year",
+                    dir: "asc"
+                }
+            },
+            title: {
+                text: "Spain electricity production (GWh)"
+            },
+            legend: {
+                position: "top"
+            },
+            seriesDefaults: {
+                type: "pie",
+                labels: {
+                    //template: "#= kendo.format('{0:P}', percentage)#",
+                    template: "#= kendo.format('{0:P}', percentage)#",
+                    visible: true
+                }
+            },
+            series: [{
+                field: "random",
+                categoryField: "year"
+            }],
+            tooltip: {
+                visible: true,
+                format: "{0:N0}"
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        var refresh = function(){
+            setTimeout(function() {
+                createChart();
+                refresh();
+            }, 5000);
+        };
+        createChart();
+        refresh();
+    });
+</script>

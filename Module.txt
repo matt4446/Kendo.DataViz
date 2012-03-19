@@ -1,0 +1,18 @@
+Name: KendoUI DataViz
+AntiForgery: enabled
+Author: Matthew Green 
+Website: http://www.kendoui.com/
+Version: 1.0.1
+OrchardVersion: 1.4
+Description: Kendo UI (v2011.3.1129) framework is developed by Telerik – a leading provider of development and testing tools for web, desktop and mobile applications. We are trusted by over 100,000 customers worldwide for our innovation and industry-best technical support
+Features:
+    Kendo.DataViz:
+		Name: Kendo DataViz Charts
+        Description: Kendo UI (v2011.3.1129) framework is developed by Telerik – a leading provider of development and testing tools for web, desktop and mobile applications. We are trusted by over 100,000 customers worldwide for our innovation and industry-best technical support. 
+		Category: Statistics
+		Dependencies: Orchard.jQuery
+	Kendo.DataViz.Demos:
+		Name: Kendo Dataviz Chart Demos
+		Description: Demo of the Kendo UI charts within orchard. 
+		Category: Statistics
+		Dependencies: Kendo.DataViz

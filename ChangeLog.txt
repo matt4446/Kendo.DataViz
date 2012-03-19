@@ -1,0 +1,3 @@
+﻿2012/03/14
+- Moved demos into a new feature.
+- Demos can be accessed in the admin menu "Kendo UI Dataviz Demo" after being enabled
